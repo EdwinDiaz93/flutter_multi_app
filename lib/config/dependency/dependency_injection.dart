@@ -1,0 +1,34 @@
+import 'package:get_it/get_it.dart';
+import 'package:multi_app/features/cocktail/data/clients/api_client.dart';
+import 'package:multi_app/features/cocktail/data/datasource_impl/cocktail_datasource_impl.dart';
+import 'package:multi_app/features/cocktail/data/repository_impl/cocktail_repository_impl.dart';
+import 'package:multi_app/features/cocktail/domain/datasource/cocktail_datasource.dart';
+import 'package:multi_app/features/cocktail/domain/repository/cocktail_repository.dart';
+import 'package:multi_app/features/cocktail/domain/usecases/get_categories_usecase.dart';
+import 'package:multi_app/features/cocktail/presentation/blocs/cocktail_category/cocktail_category_bloc.dart';
+
+final getIt = GetIt.instance;
+
+Future<void> setupDependencies() async {
+  // Dio
+  getIt.registerLazySingleton(() => ApiClient.cocktailApi);
+
+  // Datasource
+  getIt.registerLazySingleton<CocktailDatasource>(
+    () => CocktailDatasourceImpl(),
+  );
+
+  // repository
+  getIt.registerLazySingleton<CocktailRepository>(
+    () => CocktailRepositoryImpl(cocktailDatasource: getIt()),
+  );
+
+  //Usecases
+  getIt.registerLazySingleton<GetCategoriesUsecase>(
+    () => GetCategoriesUsecase(cocktailRepository: getIt()),
+  );
+  // Blocs
+  getIt.registerFactory(
+    () => CocktailCategoryBloc(getCategoriesUsecase: getIt()),
+  );
+}
