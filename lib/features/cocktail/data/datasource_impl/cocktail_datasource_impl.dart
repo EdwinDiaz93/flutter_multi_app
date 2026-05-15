@@ -7,7 +7,7 @@ import 'package:multi_app/features/cocktail/domain/entities/category.dart';
 class CocktailDatasourceImpl extends CocktailDatasource {
   @override
   Future<List<Category>> getCategories() async {
-    final response = await ApiClient.cocktailApi.get('');
+    final response = await ApiClient.cocktailApi.get('/list.php?c=list');
 
     final categoriesResponse = CocktailCategoriesResponse.fromJson(
       response.data,
