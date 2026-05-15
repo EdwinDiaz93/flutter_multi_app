@@ -19,8 +19,6 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _CategoryListView extends StatelessWidget {
-  const _CategoryListView({super.key});
-
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
