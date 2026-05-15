@@ -14,7 +14,7 @@ class CocktailDatasourceImpl extends CocktailDatasource {
     );
 
     return categoriesResponse.categories
-        .map((cateogry) => CocktailCategory.toEntity(cateogry))
+        .map((cateogry) => cateogry.toEntity())
         .toList();
   }
 }

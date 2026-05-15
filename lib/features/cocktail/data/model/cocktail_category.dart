@@ -27,7 +27,7 @@ class CocktailCategory {
 
   Map<String, dynamic> toJson() => {"strCategory": strCategory};
 
-  static Category toEntity(CocktailCategory cocktailCategory) {
-    return Category(name: cocktailCategory.strCategory);
+  Category toEntity() {
+    return Category(name: strCategory);
   }
 }
