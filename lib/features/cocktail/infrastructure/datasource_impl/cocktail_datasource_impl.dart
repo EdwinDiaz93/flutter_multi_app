@@ -1,5 +1,5 @@
-import 'package:multi_app/features/cocktail/data/clients/api_client.dart';
-import 'package:multi_app/features/cocktail/data/model/cocktail_category.dart';
+import 'package:multi_app/features/cocktail/infrastructure/clients/api_client.dart';
+import 'package:multi_app/features/cocktail/infrastructure/model/cocktail_category.dart';
 
 import 'package:multi_app/features/cocktail/domain/datasource/cocktail_datasource.dart';
 import 'package:multi_app/features/cocktail/domain/entities/category.dart';
