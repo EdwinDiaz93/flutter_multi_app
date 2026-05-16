@@ -57,7 +57,7 @@ class CocktailBloc extends Bloc<CocktailEvent, CocktailState> {
     loadDrink event,
     Emitter<CocktailState> emit,
   ) async {
-    emit(CocktailInitial());
+    emit(CocktailLoading());
     try {
       final drink = await getDrinkUsecase(event.id);
       emit(CocktailDrinkLoaded(drink: drink));
