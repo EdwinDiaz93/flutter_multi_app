@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multi_app/config/dependency/dependency_injection.dart';
-import 'package:multi_app/features/cocktail/presentation/blocs/cocktail_category/cocktail_category_bloc.dart';
+import 'package:multi_app/features/cocktail/presentation/blocs/cocktai/cocktail_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Drinks Type")),
       body: BlocProvider(
-        create: (_) => getIt<CocktailCategoryBloc>()..add(LoadCategories()),
+        create: (_) => getIt<CocktailBloc>()..add(LoadCategories()),
         child: _CategoryListView(),
       ),
     );
@@ -22,7 +22,7 @@ class _CategoryListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    return BlocBuilder<CocktailCategoryBloc, CocktailCategoryState>(
+    return BlocBuilder<CocktailBloc, CocktailState>(
       builder: (context, state) {
         if (state is CocktailCategoryLoading) {
           return Column(

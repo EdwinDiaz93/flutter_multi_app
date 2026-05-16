@@ -5,7 +5,7 @@ import 'package:multi_app/features/cocktail/infrastructure/repository_impl/cockt
 import 'package:multi_app/features/cocktail/domain/datasource/cocktail_datasource.dart';
 import 'package:multi_app/features/cocktail/domain/repository/cocktail_repository.dart';
 import 'package:multi_app/features/cocktail/domain/usecases/get_categories_usecase.dart';
-import 'package:multi_app/features/cocktail/presentation/blocs/cocktail_category/cocktail_category_bloc.dart';
+import 'package:multi_app/features/cocktail/presentation/blocs/blocs.dart';
 
 final getIt = GetIt.instance;
 
@@ -28,7 +28,5 @@ Future<void> setupDependencies() async {
     () => GetCategoriesUsecase(cocktailRepository: getIt()),
   );
   // Blocs
-  getIt.registerFactory(
-    () => CocktailCategoryBloc(getCategoriesUsecase: getIt()),
-  );
+  getIt.registerFactory(() => CocktailBloc(getCategoriesUsecase: getIt()));
 }

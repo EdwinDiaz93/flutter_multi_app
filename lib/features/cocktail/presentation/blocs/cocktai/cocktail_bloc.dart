@@ -4,21 +4,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:multi_app/features/cocktail/domain/entities/category.dart';
 import 'package:multi_app/features/cocktail/domain/usecases/get_categories_usecase.dart';
 
-part 'cocktail_category_event.dart';
-part 'cocktail_category_state.dart';
+part 'cocktail_event.dart';
+part 'cocktail_state.dart';
 
-class CocktailCategoryBloc
-    extends Bloc<CocktailCategoryEvent, CocktailCategoryState> {
+class CocktailBloc extends Bloc<CocktailEvent, CocktailState> {
   final GetCategoriesUsecase getCategoriesUsecase;
 
-  CocktailCategoryBloc({required this.getCategoriesUsecase})
+  CocktailBloc({required this.getCategoriesUsecase})
     : super(CocktailCategoryInitial()) {
     on<LoadCategories>(_loadCategories);
   }
 
   Future<void> _loadCategories(
     LoadCategories evemt,
-    Emitter<CocktailCategoryState> emit,
+    Emitter<CocktailState> emit,
   ) async {
     emit(CocktailCategoryLoading());
 
