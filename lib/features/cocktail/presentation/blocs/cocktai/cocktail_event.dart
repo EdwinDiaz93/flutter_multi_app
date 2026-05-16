@@ -8,3 +8,9 @@ class CocktailEvent extends Equatable {
 }
 
 class LoadCategories extends CocktailEvent {}
+
+class LoadDrinks extends CocktailEvent {
+  final String category;
+
+  const LoadDrinks({required this.category});
+}

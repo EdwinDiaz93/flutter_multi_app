@@ -7,9 +7,9 @@ sealed class CocktailState extends Equatable {
   List<Object> get props => [];
 }
 
-final class CocktailCategoryInitial extends CocktailState {}
+final class CocktailInitial extends CocktailState {}
 
-final class CocktailCategoryLoading extends CocktailState {}
+final class CocktailLoading extends CocktailState {}
 
 final class CocktailCategoryLoaded extends CocktailState {
   final List<Category> categories;
@@ -20,10 +20,19 @@ final class CocktailCategoryLoaded extends CocktailState {
   List<Object> get props => [categories];
 }
 
-final class CocktailCategoryError extends CocktailState {
+final class CocktailDrinksLoaded extends CocktailState {
+  final List<Drink> drinks;
+
+  const CocktailDrinksLoaded({required this.drinks});
+
+  @override
+  List<Object> get props => [drinks];
+}
+
+final class CocktailError extends CocktailState {
   final String message;
 
-  const CocktailCategoryError({required this.message});
+  const CocktailError({required this.message});
 
   @override
   List<Object> get props => [message];

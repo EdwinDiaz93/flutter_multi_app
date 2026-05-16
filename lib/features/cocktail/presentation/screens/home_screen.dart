@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:multi_app/config/dependency/dependency_injection.dart';
 import 'package:multi_app/features/cocktail/presentation/blocs/cocktai/cocktail_bloc.dart';
 
@@ -24,7 +25,7 @@ class _CategoryListView extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
     return BlocBuilder<CocktailBloc, CocktailState>(
       builder: (context, state) {
-        if (state is CocktailCategoryLoading) {
+        if (state is CocktailLoading) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,14 +42,16 @@ class _CategoryListView extends StatelessWidget {
               trailing: Icon(Icons.arrow_circle_right_outlined, size: 32),
               title: Text(state.categories[index].name),
               onTap: () {
-                print("Fuckyou");
+                context.push(
+                  '/cocktail-categories/${Uri.encodeComponent(state.categories[index].name)}',
+                );
               },
               leading: Icon(Icons.coffee),
             ),
           );
         }
 
-        if (state is CocktailCategoryError) {
+        if (state is CocktailError) {
           return Center(
             child: Text(
               state.message,

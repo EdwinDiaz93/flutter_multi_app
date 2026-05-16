@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:multi_app/features/cocktail/domain/usecases/get_drinks_usecase.dart';
 import 'package:multi_app/features/cocktail/infrastructure/clients/api_client.dart';
 import 'package:multi_app/features/cocktail/infrastructure/datasource_impl/cocktail_datasource_impl.dart';
 import 'package:multi_app/features/cocktail/infrastructure/repository_impl/cocktail_repository_impl.dart';
@@ -27,6 +28,12 @@ Future<void> setupDependencies() async {
   getIt.registerLazySingleton<GetCategoriesUsecase>(
     () => GetCategoriesUsecase(cocktailRepository: getIt()),
   );
+  getIt.registerLazySingleton<GetDrinksUsecase>(
+    () => GetDrinksUsecase(cocktailRepository: getIt()),
+  );
   // Blocs
-  getIt.registerFactory(() => CocktailBloc(getCategoriesUsecase: getIt()));
+  getIt.registerFactory(
+    () =>
+        CocktailBloc(getCategoriesUsecase: getIt(), getDrinksUsecase: getIt()),
+  );
 }

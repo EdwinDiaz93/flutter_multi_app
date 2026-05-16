@@ -1,4 +1,4 @@
-import 'package:multi_app/features/cocktail/domain/entities/category.dart';
+import 'package:multi_app/features/cocktail/domain/entities/entities.dart';
 import 'package:multi_app/features/cocktail/domain/repository/cocktail_repository.dart';
 
 class GetCategoriesUsecase {
