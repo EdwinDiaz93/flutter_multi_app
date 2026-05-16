@@ -37,14 +37,15 @@ class _DrinkListView extends StatelessWidget {
         }
 
         if (state is CocktailDrinksLoaded) {
-          return GridView.count(
-            physics: BouncingScrollPhysics(),
-            crossAxisCount: 2,
-            crossAxisSpacing: 5,
-            mainAxisSpacing: 5,
-            children: state.drinks
-                .map((drink) => DrinkCard(drink: drink))
-                .toList(),
+          return GridView.builder(
+            itemCount: state.drinks.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
+            ),
+            itemBuilder: (context, index) =>
+                DrinkCard(drink: state.drinks[index]),
           );
         }
         if (state is CocktailError) {

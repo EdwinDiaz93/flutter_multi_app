@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:multi_app/features/cocktail/domain/entities/entities.dart';
 
 class DrinkCard extends StatelessWidget {
@@ -11,7 +12,7 @@ class DrinkCard extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        print('tapped');
+        context.push('/cocktail-categories/drink/${drink.id}');
       },
       child: Card(
         elevation: 2,
@@ -21,21 +22,19 @@ class DrinkCard extends StatelessWidget {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(shape: BoxShape.circle),
-                child: Image.network(drink.image, fit: BoxFit.cover),
+                child: ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(10),
+                  child: Image.network(drink.image, fit: BoxFit.cover),
+                ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  drink.name,
-                  style: TextStyle(
-                    color: colors.primary,
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            Text(
+              drink.name,
+              style: TextStyle(
+                color: colors.primary,
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),

@@ -11,4 +11,9 @@ final List<GoRoute> cocktailRoutes = [
     builder: (context, state) =>
         DrinklistScreen(category: state.pathParameters['category']!),
   ),
+  GoRoute(
+    path: '/cocktail-categories/drink/:id',
+    builder: (context, state) =>
+        DrinkScreen(drinkId: state.pathParameters['id']!),
+  ),
 ];
