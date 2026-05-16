@@ -25,6 +25,13 @@ class CocktailDatasourceImpl extends CocktailDatasource {
 
     final drinkList = CocktailDrinksResponse.fromJson(response.data);
 
-    return drinkList.drinks.map((drink) => drink.toEntity()).toList();
+    return drinkList.drinks.map((drink) => drink.toEntityDrink()).toList();
+  }
+
+  @override
+  Future<DrinkDetail> getDrink(String id) async {
+    final response = await ApiClient.cocktailApi.get('/lookup.php?i=$id');
+    final drink = CocktailDrinksResponse.fromJson(response.data);
+    return drink.drinks.map((e) => e.toEntityDrinkDetail()).toList().first;
   }
 }
