@@ -1,11 +1,11 @@
 import 'package:get_it/get_it.dart';
-import 'package:multi_app/features/cocktail/domain/usecases/get_drinks_usecase.dart';
+import 'package:multi_app/features/cocktail/domain/usecases/usescases.dart';
+
 import 'package:multi_app/features/cocktail/infrastructure/clients/api_client.dart';
 import 'package:multi_app/features/cocktail/infrastructure/datasource_impl/cocktail_datasource_impl.dart';
 import 'package:multi_app/features/cocktail/infrastructure/repository_impl/cocktail_repository_impl.dart';
 import 'package:multi_app/features/cocktail/domain/datasource/cocktail_datasource.dart';
 import 'package:multi_app/features/cocktail/domain/repository/cocktail_repository.dart';
-import 'package:multi_app/features/cocktail/domain/usecases/get_categories_usecase.dart';
 import 'package:multi_app/features/cocktail/presentation/blocs/blocs.dart';
 
 final getIt = GetIt.instance;
@@ -31,9 +31,15 @@ Future<void> setupDependencies() async {
   getIt.registerLazySingleton<GetDrinksUsecase>(
     () => GetDrinksUsecase(cocktailRepository: getIt()),
   );
+  getIt.registerLazySingleton<GetDrinkUsecase>(
+    () => GetDrinkUsecase(cocktailRepository: getIt()),
+  );
   // Blocs
   getIt.registerFactory(
-    () =>
-        CocktailBloc(getCategoriesUsecase: getIt(), getDrinksUsecase: getIt()),
+    () => CocktailBloc(
+      getCategoriesUsecase: getIt(),
+      getDrinksUsecase: getIt(),
+      getDrinkUsecase: getIt(),
+    ),
   );
 }

@@ -29,6 +29,14 @@ final class CocktailDrinksLoaded extends CocktailState {
   List<Object> get props => [drinks];
 }
 
+final class CocktailDrinkLoaded extends CocktailState {
+  final DrinkDetail drink;
+
+  const CocktailDrinkLoaded({required this.drink});
+  @override
+  List<Object> get props => [drink];
+}
+
 final class CocktailError extends CocktailState {
   final String message;
 

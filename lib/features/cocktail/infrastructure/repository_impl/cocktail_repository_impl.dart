@@ -16,4 +16,9 @@ class CocktailRepositoryImpl extends CocktailRepository {
   Future<List<Drink>> getDrinks(String category) {
     return cocktailDatasource.getDrinks(category);
   }
+
+  @override
+  Future<DrinkDetail> getDrink(String id) {
+    return cocktailDatasource.getDrink(id);
+  }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:multi_app/config/dependency/dependency_injection.dart';
-import 'package:multi_app/features/cocktail/presentation/blocs/cocktai/cocktail_bloc.dart';
+import 'package:multi_app/features/cocktail/presentation/blocs/cocktail/cocktail_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
