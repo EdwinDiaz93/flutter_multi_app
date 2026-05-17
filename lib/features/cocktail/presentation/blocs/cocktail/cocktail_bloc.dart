@@ -22,7 +22,7 @@ class CocktailBloc extends Bloc<CocktailEvent, CocktailState> {
   }) : super(CocktailInitial()) {
     on<LoadCategories>(_loadCategories);
     on<LoadDrinks>(_loadDrinks);
-    on<loadDrink>(_loadDrinkDetail);
+    on<LoadDrink>(_loadDrinkDetail);
   }
 
   Future<void> _loadCategories(
@@ -54,12 +54,13 @@ class CocktailBloc extends Bloc<CocktailEvent, CocktailState> {
   }
 
   Future<void> _loadDrinkDetail(
-    loadDrink event,
+    LoadDrink event,
     Emitter<CocktailState> emit,
   ) async {
     emit(CocktailLoading());
     try {
       final drink = await getDrinkUsecase(event.id);
+
       emit(CocktailDrinkLoaded(drink: drink));
     } catch (e) {
       emit(CocktailError(message: "error al cargar bebida"));

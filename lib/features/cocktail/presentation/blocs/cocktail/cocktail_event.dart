@@ -15,8 +15,8 @@ class LoadDrinks extends CocktailEvent {
   const LoadDrinks({required this.category});
 }
 
-class loadDrink extends CocktailEvent {
+class LoadDrink extends CocktailEvent {
   final String id;
 
-  const loadDrink({required this.id});
+  const LoadDrink({required this.id});
 }

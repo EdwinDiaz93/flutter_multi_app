@@ -272,7 +272,7 @@ class CocktailDrink {
         strIngredient13,
         strIngredient14,
         strIngredient15,
-      ],
+      ].where((item) => item.isNotEmpty).toList(),
       measures: [
         strMeasure1,
         strMeasure2,
@@ -289,13 +289,15 @@ class CocktailDrink {
         strMeasure13,
         strMeasure14,
         strMeasure15,
-      ],
+      ].where((item) => item.isNotEmpty).toList(),
       imageSource: strImageSource,
       attribution: strImageAttribution,
       creativeCommonConfirmed: strCreativeCommonsConfirmed == 'Yes'
           ? true
           : false,
-      dateModified: DateTime.parse(dateModified),
+      dateModified: dateModified.isNotEmpty
+          ? DateTime.parse(dateModified)
+          : DateTime.now(),
     );
   }
 }
