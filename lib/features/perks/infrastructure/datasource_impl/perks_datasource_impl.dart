@@ -3,17 +3,17 @@ import 'package:multi_app/features/perks/domain/entities/perks.dart';
 
 class PerksDatasourceImpl extends PerksDatasource {
   @override
-  Future<Perks> getPerks(String salario) async {
+  Future<Perks> getPerks(String salary, String workedTime) async {
     return Perks(
-      afp: '',
-      afpPatronal: '',
-      isss: '',
-      isssPatronal: '',
-      renta: '',
-      descuentosTotales: '',
-      vacaciones: '',
-      aguinaldo: '',
-      salarioLiquido: '',
+      afp: '1500',
+      afpPatronal: '1500',
+      isss: '1500',
+      isssPatronal: '1500',
+      renta: '1500',
+      descuentosTotales: '1500',
+      vacaciones: '1500',
+      aguinaldo: '1500',
+      salarioLiquido: '1500',
     );
   }
 }

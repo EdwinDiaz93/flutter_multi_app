@@ -8,7 +8,7 @@ class PerksRepositoryImpl extends PerksRepository {
   PerksRepositoryImpl({required this.perksDatasource});
 
   @override
-  Future<Perks> getPerks(String salario) {
-    return perksDatasource.getPerks(salario);
+  Future<Perks> getPerks(String salario, String workedTime) {
+    return perksDatasource.getPerks(salario, workedTime);
   }
 }
