@@ -87,13 +87,19 @@ class _DrinkDetailView extends StatelessWidget {
                   Divider(color: colors.tertiary, thickness: 5),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Instructions',
-                      style: TextStyle(
-                        color: colors.primary,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                      ),
+                    child: Column(
+                      children: [
+                        Text(
+                          'Instructions',
+
+                          style: TextStyle(
+                            color: colors.primary,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                          ),
+                        ),
+                        Text(drink.instructions['EN']!),
+                      ],
                     ),
                   ),
                 ],

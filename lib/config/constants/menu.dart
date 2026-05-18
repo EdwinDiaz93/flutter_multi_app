@@ -14,4 +14,9 @@ final List<MenuItem> menu = [
     route: '/cocktail-categories',
     icon: Icons.wine_bar,
   ),
+  MenuItem(
+    label: "Prestaciones",
+    route: '/perks',
+    icon: Icons.wallet_travel_outlined,
+  ),
 ];
