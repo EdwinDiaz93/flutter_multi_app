@@ -6,12 +6,14 @@ class CustomInputNumber extends StatelessWidget {
   final bool useDecimals;
   final String label;
   final String placeholder;
+  final IconData icon;
   const CustomInputNumber({
     super.key,
     required this.controller,
     this.useDecimals = false,
     required this.label,
     required this.placeholder,
+    required this.icon,
   });
 
   @override
@@ -28,11 +30,13 @@ class CustomInputNumber extends StatelessWidget {
       },
       keyboardType: TextInputType.numberWithOptions(decimal: useDecimals),
       inputFormatters: [
-        FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}')),
+        FilteringTextInputFormatter.allow(
+          RegExp(useDecimals ? r'^\d*\.?\d{0,2}$' : r'^\d*$'),
+        ),
       ],
       decoration: InputDecoration(
         label: Text(label),
-        prefixIcon: Icon(Icons.attach_money),
+        prefixIcon: Icon(icon),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: colors.primary),
           borderRadius: BorderRadius.all(Radius.circular(10)),

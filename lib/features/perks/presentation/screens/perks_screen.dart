@@ -31,6 +31,7 @@ class _PerksView extends StatefulWidget {
 
 class _PerksViewState extends State<_PerksView> {
   final salaryController = TextEditingController();
+  final monthController = TextEditingController();
   String workedTime = '0';
   @override
   Widget build(BuildContext context) {
@@ -60,6 +61,7 @@ class _PerksViewState extends State<_PerksView> {
         children: [
           CustomInputNumber(
             controller: salaryController,
+            icon: Icons.attach_money,
             useDecimals: true,
             label: 'Salario',
             placeholder: "1000",
@@ -81,7 +83,8 @@ class _PerksViewState extends State<_PerksView> {
           SizedBox(height: 15),
           if (workedTime == '0')
             CustomInputNumber(
-              controller: salaryController,
+              controller: monthController,
+              icon: Icons.calendar_month,
               useDecimals: false,
               label: 'meses',
               placeholder: '1-11',
